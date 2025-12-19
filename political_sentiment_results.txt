@@ -1,0 +1,103 @@
+[nltk_data] Downloading package stopwords to /root/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+
+DATASET SIZE INFO
+Full dataset size: 467985
+Train size BEFORE filtering: 374388
+Test size BEFORE filtering: 93597
+
+Using top models: ['cohere-chat', 'gpt4', 'mistral-chat', 'mpt-chat', 'llama-chat']
+Train size AFTER filtering: 171149
+Test size AFTER filtering: 42787
+
+FINAL TRAIN label distribution:
+model
+mpt-chat        42787
+mistral-chat    42787
+llama-chat      42787
+gpt4            21394
+cohere-chat     21394
+Name: count, dtype: int64
+
+FINAL TEST label distribution:
+model
+mistral-chat    10697
+mpt-chat        10697
+llama-chat      10697
+cohere-chat      5348
+gpt4             5348
+Name: count, dtype: int64
+
+Building feature matrices
+TF-IDF train shape: (171149, 2000)
+Combined train shape: (171149, 2078)
+Feature count: 78
+X_train shape: (171149, 2078)
+X_test shape: (42787, 2078)
+
+Classes:
+['cohere-chat', 'gpt4', 'llama-chat', 'mistral-chat', 'mpt-chat']
+
+Training RandomForest...
+
+RandomForest Accuracy: 0.7337976488185664
+RandomForest Macro F1: 0.7234737981815966
+RandomForest Confusion Matrix:
+ [[2471  119  597 1497  664]
+ [  15 3807 1099  318  109]
+ [  29   43 9685  864   76]
+ [ 294   73 1625 7493 1212]
+ [ 245   77  473 1961 7941]]
+
+Training XGBoost...
+
+XGB Accuracy: 0.8266062121672471
+XGB Macro F1: 0.8292547091135308
+XGB Confusion Matrix:
+ [[3881   80  198  673  516]
+ [  31 4833  308  109   67]
+ [  73   93 9836  588  107]
+ [ 463   83  894 8141 1116]
+ [ 366   58  277 1319 8677]]
+
+Training LightGBM...
+[LightGBM] [Info] Auto-choosing col-wise multi-threading, the overhead of testing was 4.167212 seconds.
+You can set force_col_wise=true to remove the overhead.
+[LightGBM] [Info] Total Bins 527786
+[LightGBM] [Info] Number of data points in the train set: 171149, number of used features: 2078
+[LightGBM] [Info] Start training from score -2.079424
+[LightGBM] [Info] Start training from score -2.079424
+[LightGBM] [Info] Start training from score -1.386300
+[LightGBM] [Info] Start training from score -1.386300
+[LightGBM] [Info] Start training from score -1.386300
+/usr/local/lib/python3.12/dist-packages/sklearn/utils/validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+
+LGBM Accuracy: 0.8392268679739173
+LGBM Macro F1: 0.8423035983294709
+LGBM Confusion Matrix:
+ [[4039   71  158  609  471]
+ [  39 4927  236   96   50]
+ [  78   88 9868  547  116]
+ [ 471   82  781 8286 1077]
+ [ 377   51  239 1242 8788]]
+
+
+Error analysis (XGB):
+Number of errors: 7419
+
+Top confusions:
+true_model    pred_model    domain   
+mpt-chat      mistral-chat  poetry       312
+                            wiki         302
+                            news         277
+mistral-chat  mpt-chat      news         261
+                            reddit       245
+              llama-chat    wiki         218
+                            news         186
+                            books        174
+              mpt-chat      books        142
+                            abstracts    127
+Name: count, dtype: int64
+
+Done.

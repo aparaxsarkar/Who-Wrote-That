@@ -1,0 +1,94 @@
+DATASET SIZE INFO
+Full dataset size: 467985
+Train size BEFORE filtering: 374388
+Test size BEFORE filtering: 93597
+
+Using models: ['cohere-chat', 'gpt4', 'mistral-chat', 'mpt-chat', 'llama-chat']
+Train size AFTER filtering: 171149
+Test size AFTER filtering: 42787
+
+FINAL TRAIN label distribution:
+model
+mpt-chat        42787
+llama-chat      42787
+mistral-chat    42787
+gpt4            21394
+cohere-chat     21394
+Name: count, dtype: int64
+
+FINAL TEST label distribution:
+model
+mistral-chat    10697
+mpt-chat        10697
+llama-chat      10697
+cohere-chat      5348
+gpt4             5348
+Name: count, dtype: int64
+
+Building feature matrices
+Feature count: 66
+X_train shape: (171149, 66)
+X_test shape: (42787, 66)
+
+Classes:
+['cohere-chat', 'gpt4', 'llama-chat', 'mistral-chat', 'mpt-chat']
+
+Training RandomForest...
+
+RandomForest Accuracy: 0.7457405286652488
+RandomForest Macro F1: 0.7410202886330058
+RandomForest Confusion Matrix:
+ [[3075  108  388 1150  627]
+ [  48 4056  794  348  102]
+ [  60  160 9466  928   83]
+ [ 585  199 1447 7232 1234]
+ [ 411  143  347 1717 8079]]
+
+Training XGBoost...
+
+XGB Accuracy: 0.7699534905461939
+XGB Macro F1: 0.7686760283074875
+XGB Confusion Matrix:
+ [[3438  114  256  912  628]
+ [  63 4429  496  240  120]
+ [ 105  227 9354  906  105]
+ [ 592  225 1228 7344 1308]
+ [ 425  136  262 1495 8379]]
+
+Training LightGBM...
+[LightGBM] [Info] Auto-choosing col-wise multi-threading, the overhead of testing was 0.015275 seconds.
+You can set `force_col_wise=true` to remove the overhead.
+[LightGBM] [Info] Total Bins 15840
+[LightGBM] [Info] Number of data points in the train set: 171149, number of used features: 66
+[LightGBM] [Info] Start training from score -2.079424
+[LightGBM] [Info] Start training from score -2.079424
+[LightGBM] [Info] Start training from score -1.386300
+[LightGBM] [Info] Start training from score -1.386300
+[LightGBM] [Info] Start training from score -1.386300
+
+LGBM Accuracy: 0.7733891135157875
+LGBM Macro F1: 0.7727367640966867
+LGBM Confusion Matrix:
+ [[3504  107  234  870  633]
+ [  75 4456  444  251  122]
+ [  88  225 9376  891  117]
+ [ 600  218 1195 7342 1342]
+ [ 440  124  256 1464 8413]]
+
+Error analysis (XGB):
+Number of errors: 9843
+
+Top confusions:
+true_model    pred_model    domain
+mpt-chat      mistral-chat  news      344
+                            poetry    323
+                            wiki      296
+mistral-chat  llama-chat    wiki      262
+              mpt-chat      reddit    251
+                            news      249
+              llama-chat    books     243
+                            news      209
+              mpt-chat      books     203
+gpt4          llama-chat    reddit    191
+Name: count, dtype: int64
+

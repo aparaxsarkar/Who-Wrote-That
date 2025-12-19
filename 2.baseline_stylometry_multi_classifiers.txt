@@ -1,0 +1,205 @@
+DATASET SIZE INFO
+Full dataset size: 467985
+Train size BEFORE filtering: 374388
+Test size BEFORE filtering: 93597
+
+Using models: ['cohere-chat', 'gpt4', 'mistral-chat', 'mpt-chat', 'llama-chat']
+Train size AFTER filtering: 171149
+Test size AFTER filtering: 42787
+
+FINAL TRAIN label distribution:
+model
+mpt-chat        42787
+llama-chat      42787
+mistral-chat    42787
+gpt4            21394
+cohere-chat     21394
+Name: count, dtype: int64
+
+FINAL TEST label distribution:
+model
+mistral-chat    10697
+mpt-chat        10697
+llama-chat      10697
+cohere-chat      5348
+gpt4             5348
+Name: count, dtype: int64
+
+Building feature matrices
+Feature count: 59
+X_train shape: (171149, 59)
+X_test shape: (42787, 59)
+
+Classes:
+['cohere-chat', 'gpt4', 'llama-chat', 'mistral-chat', 'mpt-chat']
+
+Training RandomForest...
+
+RandomForest Accuracy: 0.7420711898473835
+RandomForest Macro F1: 0.7366553375878456
+RandomForest Confusion Matrix:
+ [[3067  118  404 1095  664]
+ [  54 3992  805  396  101]
+ [  64  154 9442  952   85]
+ [ 606  218 1446 7194 1233]
+ [ 424  148  342 1727 8056]]
+
+Training Logistic Regression...
+/Users/daniel_ojeda/Desktop/data_mining copy/venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1184: FutureWarning: 'n_jobs' has no effect since 1.8 and will be removed in 1.10. You provided 'n_jobs=-1', please leave it unspecified.
+  warnings.warn(msg, category=FutureWarning)
+
+LogReg Accuracy: 0.5874214130460187
+LogReg Macro F1: 0.5627855986608853
+LogReg Confusion Matrix:
+ [[1916  287  763 1442  940]
+ [  84 2795 1489  528  452]
+ [ 237  654 8423 1148  235]
+ [ 905  495 2227 5036 2034]
+ [ 635  273  715 2110 6964]]
+
+Training Linear SVM...
+
+LinearSVC Accuracy: 0.571949423890434
+LinearSVC Macro F1: 0.5367484901250672
+LinearSVC Confusion Matrix:
+ [[1578  265 1009 1385 1111]
+ [  74 2624 1696  373  581]
+ [ 156  544 8918  766  313]
+ [ 730  538 2861 4109 2459]
+ [ 501  277  907 1769 7243]]
+
+Training ExtraTrees...
+
+ExtraTrees Accuracy: 0.7372800149578143
+ExtraTrees Macro F1: 0.7313439682727942
+ExtraTrees Confusion Matrix:
+ [[2966  144  478 1111  649]
+ [  33 3947  902  363  103]
+ [  59  108 9536  927   67]
+ [ 544  209 1610 7116 1218]
+ [ 387  160  400 1769 7981]]
+
+Training XGBoost...
+
+XGB Accuracy: 0.7623109823077103
+XGB Macro F1: 0.7605317984497453
+XGB Confusion Matrix:
+ [[3387  124  269  948  620]
+ [  65 4348  553  262  120]
+ [  98  231 9337  919  112]
+ [ 612  239 1261 7243 1342]
+ [ 439  134  278 1544 8302]]
+
+Training LightGBM...
+[LightGBM] [Info] Auto-choosing col-wise multi-threading, the overhead of testing was 0.015489 seconds.
+You can set `force_col_wise=true` to remove the overhead.
+[LightGBM] [Info] Total Bins 14055
+[LightGBM] [Info] Number of data points in the train set: 171149, number of used features: 59
+[LightGBM] [Info] Start training from score -2.079424
+[LightGBM] [Info] Start training from score -2.079424
+[LightGBM] [Info] Start training from score -1.386300
+[LightGBM] [Info] Start training from score -1.386300
+[LightGBM] [Info] Start training from score -1.386300
+
+LGBM Accuracy: 0.7660738074648842
+LGBM Macro F1: 0.7648256300230303
+LGBM Confusion Matrix:
+ [[3437  121  236  934  620]
+ [  74 4432  472  258  112]
+ [ 108  232 9345  899  113]
+ [ 616  232 1244 7241 1364]
+ [ 456  151  249 1518 8323]]
+
+Error analysis (XGB):
+Number of errors: 10170
+
+Top confusions:
+true_model    pred_model    domain
+mpt-chat      mistral-chat  news      358
+                            poetry    326
+                            wiki      300
+mistral-chat  mpt-chat      reddit    265
+              llama-chat    wiki      262
+              mpt-chat      news      253
+              llama-chat    books     244
+gpt4          llama-chat    reddit    237
+mistral-chat  llama-chat    news      219
+              mpt-chat      books     212
+Name: count, dtype: int64
+
+Error analysis (RandomForest):
+Number of errors: 11036
+true_model    pred_model    domain   
+mpt-chat      mistral-chat  news         419
+                            poetry       362
+                            wiki         349
+gpt4          llama-chat    reddit       349
+mistral-chat  llama-chat    wiki         344
+                            books        281
+              mpt-chat      reddit       272
+              llama-chat    news         260
+              mpt-chat      books        209
+                            abstracts    194
+Name: count, dtype: int64
+
+Error analysis (LogReg):
+Number of errors: 17653
+true_model    pred_model    domain   
+mistral-chat  mpt-chat      abstracts    617
+mpt-chat      mistral-chat  news         490
+gpt4          llama-chat    reddit       450
+mistral-chat  llama-chat    news         431
+mpt-chat      mistral-chat  poetry       425
+mistral-chat  llama-chat    books        409
+gpt4          mpt-chat      abstracts    397
+mistral-chat  mpt-chat      reddit       390
+              llama-chat    wiki         378
+mpt-chat      mistral-chat  wiki         367
+Name: count, dtype: int64
+
+Error analysis (LinearSVM):
+Number of errors: 18315
+true_model    pred_model    domain   
+mistral-chat  mpt-chat      abstracts    787
+              llama-chat    books        551
+                            news         534
+gpt4          llama-chat    reddit       512
+              mpt-chat      abstracts    508
+mistral-chat  mpt-chat      reddit       496
+              llama-chat    wiki         471
+mpt-chat      mistral-chat  news         416
+                            poetry       355
+mistral-chat  llama-chat    reddit       353
+Name: count, dtype: int64
+
+Error analysis (ExtraTrees):
+Number of errors: 11241
+true_model    pred_model    domain
+mpt-chat      mistral-chat  news      447
+gpt4          llama-chat    reddit    414
+mpt-chat      mistral-chat  poetry    393
+mistral-chat  llama-chat    wiki      373
+mpt-chat      mistral-chat  wiki      349
+mistral-chat  llama-chat    books     336
+                            news      282
+              mpt-chat      reddit    280
+                            books     225
+              llama-chat    reddit    200
+Name: count, dtype: int64
+
+Error analysis (LGBM):
+Number of errors: 10009
+true_model    pred_model    domain
+mpt-chat      mistral-chat  news      344
+                            poetry    322
+                            wiki      300
+mistral-chat  mpt-chat      reddit    270
+                            news      254
+              llama-chat    wiki      251
+                            books     246
+              mpt-chat      books     223
+              llama-chat    news      220
+gpt4          llama-chat    reddit    204
+Name: count, dtype: int64
+
+

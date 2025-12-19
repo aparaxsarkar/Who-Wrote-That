@@ -1,0 +1,262 @@
+Output folder: runs/run_20251215_041523
+
+DATASET SIZE INFO
+After filtering/cap: 213936
+model
+llama-chat      53484
+mpt-chat        53484
+mistral-chat    53484
+gpt4            26742
+cohere-chat     26742
+Name: count, dtype: int64
+
+Classes: ['cohere-chat', 'gpt4', 'llama-chat', 'mistral-chat', 'mpt-chat']
+[build] Computing 56 numeric features (cached)...
+  Processed 0/213936
+  Processed 5000/213936
+  Processed 10000/213936
+  Processed 15000/213936
+  Processed 20000/213936
+  Processed 25000/213936
+  Processed 30000/213936
+  Processed 35000/213936
+  Processed 40000/213936
+  Processed 45000/213936
+  Processed 50000/213936
+  Processed 55000/213936
+  Processed 60000/213936
+  Processed 65000/213936
+  Processed 70000/213936
+  Processed 75000/213936
+  Processed 80000/213936
+  Processed 85000/213936
+  Processed 90000/213936
+  Processed 95000/213936
+  Processed 100000/213936
+  Processed 105000/213936
+  Processed 110000/213936
+  Processed 115000/213936
+  Processed 120000/213936
+  Processed 125000/213936
+  Processed 130000/213936
+  Processed 135000/213936
+  Processed 140000/213936
+  Processed 145000/213936
+  Processed 150000/213936
+  Processed 155000/213936
+  Processed 160000/213936
+  Processed 165000/213936
+  Processed 170000/213936
+  Processed 175000/213936
+  Processed 180000/213936
+  Processed 185000/213936
+  Processed 190000/213936
+  Processed 195000/213936
+  Processed 200000/213936
+  Processed 205000/213936
+  Processed 210000/213936
+
+[build] TF-IDF...
+TF-IDF train: (171148, 2000)  test: (42788, 2000)
+Combined train: (171148, 2056)  test: (42788, 2056)
+
+[train] LGBM_combined...
+
+[LGBM_combined] Accuracy: 0.839768
+[LGBM_combined] Macro F1:  0.843258
+[LGBM_combined] Confusion Matrix:
+[[4070   78  167  568  465]
+ [  41 4910  250   96   52]
+ [  87   76 9850  563  121]
+ [ 439   81  765 8327 1085]
+ [ 353   64  234 1271 8775]]
+
+[train] XGB_combined...
+
+[XGB_combined] Accuracy: 0.828246
+[XGB_combined] Macro F1:  0.831102
+[XGB_combined] Confusion Matrix:
+[[3930   81  200  630  507]
+ [  42 4824  296  121   66]
+ [  87   78 9810  617  105]
+ [ 454   88  868 8182 1105]
+ [ 353   71  281 1299 8693]]
+
+[train] LGBM_combined_v2...
+
+[LGBM_combined_v2] Accuracy: 0.852225
+[LGBM_combined_v2] Macro F1:  0.855702
+[LGBM_combined_v2] Confusion Matrix:
+[[4124   64  164  564  432]
+ [  41 4922  230  109   47]
+ [  54   59 9933  548  103]
+ [ 385   59  673 8566 1014]
+ [ 315   47  227 1188 8920]]
+
+[train] SGD_tfidf...
+
+[SGD_tfidf] Accuracy: 0.670094
+[SGD_tfidf] Macro F1:  0.658868
+[SGD_tfidf] Confusion Matrix:
+[[2424  191  775 1050  908]
+ [  49 3510 1107  334  349]
+ [  74  179 9304  751  389]
+ [ 490  236 2001 5971 1999]
+ [ 449  185  762 1838 7463]]
+
+[train] CNB_tfidf...
+
+[CNB_tfidf] Accuracy: 0.470973
+[CNB_tfidf] Macro F1:  0.458971
+[CNB_tfidf] Confusion Matrix:
+[[2387  895 1137  449  480]
+ [ 540 3168  823  346  472]
+ [ 552 2003 6355  538 1249]
+ [1279 1303 2361 2869 2885]
+ [1075 1141 1687 1421 5373]]
+
+[train] LGBM_56only...
+
+[LGBM_56only] Accuracy: 0.767809
+[LGBM_56only] Macro F1:  0.765807
+[LGBM_56only] Confusion Matrix:
+[[3459  114  266  894  615]
+ [  77 4418  449  284  121]
+ [ 116  241 9349  867  124]
+ [ 674  229 1153 7288 1353]
+ [ 482  144  272 1460 8339]]
+
+[analysis] Complementarity (pairwise):
+{'pair': 'LGBM_combined vs XGB_combined', 'disagree_rate': 0.0692951294755539, 'B_helps_A': 0.02367486211087221, 'A_helps_B': 0.03519678414508741, 'oracle_upper_bound': 0.8634430214078713}
+{'pair': 'LGBM_combined vs LGBM_combined_v2', 'disagree_rate': 0.06055436103580443, 'B_helps_A': 0.032158549125923155, 'A_helps_B': 0.019701785547349724, 'oracle_upper_bound': 0.8719267084229223}
+{'pair': 'LGBM_combined vs SGD_tfidf', 'disagree_rate': 0.2860848836122277, 'B_helps_A': 0.03977750771244274, 'A_helps_B': 0.2094512480134617, 'oracle_upper_bound': 0.8795456670094419}
+{'pair': 'LGBM_combined vs CNB_tfidf', 'disagree_rate': 0.5135785734318034, 'B_helps_A': 0.03360755351967842, 'A_helps_B': 0.40240254276900067, 'oracle_upper_bound': 0.8733757128166776}
+{'pair': 'LGBM_combined vs LGBM_56only', 'disagree_rate': 0.17215107039356828, 'B_helps_A': 0.03886603720669347, 'A_helps_B': 0.11082546508366832, 'oracle_upper_bound': 0.8786341965036927}
+{'pair': 'XGB_combined vs LGBM_combined_v2', 'disagree_rate': 0.07128166775731513, 'B_helps_A': 0.04262877442273535, 'A_helps_B': 0.018650088809946713, 'oracle_upper_bound': 0.8708750116855193}
+{'pair': 'XGB_combined vs SGD_tfidf', 'disagree_rate': 0.2858745442647471, 'B_helps_A': 0.044171262970926425, 'A_helps_B': 0.2023230812377302, 'oracle_upper_bound': 0.8724175002337103}
+{'pair': 'XGB_combined vs CNB_tfidf', 'disagree_rate': 0.512667102926054, 'B_helps_A': 0.03582780218752921, 'A_helps_B': 0.3931008694026363, 'oracle_upper_bound': 0.8640740394503131}
+{'pair': 'XGB_combined vs LGBM_56only', 'disagree_rate': 0.16397120688043376, 'B_helps_A': 0.04019818640740395, 'A_helps_B': 0.1006356922501636, 'oracle_upper_bound': 0.8684444236701879}
+{'pair': 'LGBM_combined_v2 vs SGD_tfidf', 'disagree_rate': 0.2873702907357203, 'B_helps_A': 0.03533701037674114, 'A_helps_B': 0.21746751425633354, 'oracle_upper_bound': 0.8875619332523137}
+{'pair': 'LGBM_combined_v2 vs CNB_tfidf', 'disagree_rate': 0.5140927362812003, 'B_helps_A': 0.030265494998597736, 'A_helps_B': 0.4115172478264934, 'oracle_upper_bound': 0.8824904178741704}
+{'pair': 'LGBM_combined_v2 vs LGBM_56only', 'disagree_rate': 0.17058521080676825, 'B_helps_A': 0.0329297934000187, 'A_helps_B': 0.11734598485556698, 'oracle_upper_bound': 0.8851547162755913}
+{'pair': 'SGD_tfidf vs CNB_tfidf', 'disagree_rate': 0.41383098064878004, 'B_helps_A': 0.05057492754978031, 'A_helps_B': 0.24969617649808357, 'oracle_upper_bound': 0.7206693465457605}
+{'pair': 'SGD_tfidf vs LGBM_56only', 'disagree_rate': 0.34374123586052163, 'B_helps_A': 0.19187622697952697, 'A_helps_B': 0.09416191455548284, 'oracle_upper_bound': 0.8619706459755071}
+{'pair': 'CNB_tfidf vs LGBM_56only', 'disagree_rate': 0.5370898382724129, 'B_helps_A': 0.362554921940731, 'A_helps_B': 0.06571936056838366, 'oracle_upper_bound': 0.8335280919884079}
+
+[vote] Equal votes...
+[VOTE_LGBM+XGB] Accuracy: 0.838459
+[VOTE_LGBM+XGB] Macro F1:  0.841787
+[VOTE_LGBM+XGB] Confusion Matrix:
+[[4023   79  188  581  477]
+ [  46 4888  264   96   55]
+ [  81   67 9872  572  105]
+ [ 422   76  805 8319 1075]
+ [ 339   58  260 1266 8774]]
+
+[VOTE_LGBM+XGB+SGD] Accuracy: 0.835234
+[VOTE_LGBM+XGB+SGD] Macro F1:  0.838391
+[VOTE_LGBM+XGB+SGD] Confusion Matrix:
+[[3960   81  207  610  490]
+ [  40 4858  297  103   51]
+ [  66   56 9934  545   96]
+ [ 412   76  869 8285 1055]
+ [ 329   61  284 1322 8701]]
+
+[VOTE_LGBM+XGB+SGD+CNB] Accuracy: 0.835141
+[VOTE_LGBM+XGB+SGD+CNB] Macro F1:  0.838238
+[VOTE_LGBM+XGB+SGD+CNB] Confusion Matrix:
+[[3969   81  207  611  480]
+ [  43 4850  305  101   50]
+ [  66   57 9937  542   95]
+ [ 418   77  873 8281 1048]
+ [ 330   62  290 1318 8697]]
+
+[VOTE_LGBM+LGBMv2+XGB] Accuracy: 0.845634
+[VOTE_LGBM+LGBMv2+XGB] Macro F1:  0.849164
+[VOTE_LGBM+LGBMv2+XGB] Confusion Matrix:
+[[4083   68  176  555  466]
+ [  41 4914  245   98   51]
+ [  76   65 9903  551  102]
+ [ 393   71  737 8447 1049]
+ [ 327   55  242 1237 8836]]
+
+[VOTE_LGBM+LGBMv2+XGB+SGD] Accuracy: 0.844185
+[VOTE_LGBM+LGBMv2+XGB+SGD] Macro F1:  0.847535
+[VOTE_LGBM+LGBMv2+XGB+SGD] Confusion Matrix:
+[[4046   69  194  582  457]
+ [  39 4894  269   99   48]
+ [  70   59 9945  528   95]
+ [ 386   69  780 8445 1017]
+ [ 318   56  264 1268 8791]]
+
+[vote] Weight search (train-only validation)...
+Best weights (LGBM,XGB): {'weights': (3, 1), 'macro_f1': 0.8268464739082478, 'acc': 0.8252020644658682}
+Best weights (LGBM,XGB,SGD): {'weights': (3, 1, 1), 'macro_f1': 0.8260488522261842, 'acc': 0.8242769500438212}
+Best weights (LGBM,XGB,SGD,CNB): {'weights': (2, 1, 1, 2), 'macro_f1': 0.8246953628548711, 'acc': 0.8228649332943812}
+
+[VOTE_TUNED_LGBM+XGB] Accuracy: 0.840493
+[VOTE_TUNED_LGBM+XGB] Macro F1:  0.844177
+[VOTE_TUNED_LGBM+XGB] Confusion Matrix:
+[[4068   78  180  563  459]
+ [  40 4907  251   98   53]
+ [  83   69 9868  565  112]
+ [ 425   75  782 8344 1071]
+ [ 337   62  243 1279 8776]]
+
+[VOTE_TUNED_LGBM+XGB+SGD] Accuracy: 0.839137
+[VOTE_TUNED_LGBM+XGB+SGD] Macro F1:  0.842585
+[VOTE_TUNED_LGBM+XGB+SGD] Confusion Matrix:
+[[4029   77  189  585  468]
+ [  38 4892  267   99   53]
+ [  77   61 9906  546  107]
+ [ 424   73  814 8330 1056]
+ [ 336   61  268 1284 8748]]
+
+[VOTE_TUNED_LGBM+XGB+SGD+CNB] Accuracy: 0.837945
+[VOTE_TUNED_LGBM+XGB+SGD+CNB] Macro F1:  0.841213
+[VOTE_TUNED_LGBM+XGB+SGD+CNB] Confusion Matrix:
+[[4010   81  196  594  467]
+ [  41 4882  278   98   50]
+ [  74   58 9921  543  101]
+ [ 424   73  841 8314 1045]
+ [ 341   61  278 1290 8727]]
+
+[stack] OOF stacking (meta = SGD log_loss)...
+  STACK_LGBM+XGB fold 1/3
+  STACK_LGBM+XGB fold 2/3
+  STACK_LGBM+XGB fold 3/3
+
+[STACK_LGBM+XGB] Accuracy: 0.840095
+[STACK_LGBM+XGB] Macro F1:  0.844053
+[STACK_LGBM+XGB] Confusion Matrix:
+[[4106   83  164  540  455]
+ [  40 4961  202   97   49]
+ [  94   92 9786  610  115]
+ [ 458   87  734 8336 1082]
+ [ 360   65  218 1297 8757]]
+  STACK_LGBM+XGB+SGD+CNB fold 1/3
+  STACK_LGBM+XGB+SGD+CNB fold 2/3
+  STACK_LGBM+XGB+SGD+CNB fold 3/3
+
+[STACK_LGBM+XGB+SGD+CNB] Accuracy: 0.840843
+[STACK_LGBM+XGB+SGD+CNB] Macro F1:  0.844577
+[STACK_LGBM+XGB+SGD+CNB] Confusion Matrix:
+[[4112   81  165  549  441]
+ [  43 4959  205   98   44]
+ [  86   95 9809  591  116]
+ [ 476   88  733 8340 1060]
+ [ 361   63  223 1292 8758]]
+  STACK_LGBMcombined+LGBM56 fold 1/3
+  STACK_LGBMcombined+LGBM56 fold 2/3
+  STACK_LGBMcombined+LGBM56 fold 3/3
+
+[STACK_LGBMcombined+LGBM56] Accuracy: 0.841241
+[STACK_LGBMcombined+LGBM56] Macro F1:  0.845098
+[STACK_LGBMcombined+LGBM56] Confusion Matrix:
+[[4101   81  159  558  449]
+ [  40 4964  204   89   52]
+ [  91   98 9788  609  111]
+ [ 443   86  735 8377 1056]
+ [ 360   61  221 1290 8765]]
+
+Done. Everything saved in: runs/run_20251215_041523

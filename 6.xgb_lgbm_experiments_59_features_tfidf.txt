@@ -1,0 +1,101 @@
+X_train: (171148, 2059)
+X_test: (42788, 2059)
+
+[train] XGB_v1
+
+XGB_v1
+Accuracy: 0.828199
+Macro F1: 0.831311
+[[3953   90  199  603  503]
+ [  46 4835  289  118   61]
+ [  80   75 9814  626  102]
+ [ 469   83  843 8209 1093]
+ [ 368   69  282 1352 8626]]
+
+[train] XGB_v2
+
+XGB_v2
+Accuracy: 0.834510
+Macro F1: 0.837949
+[[3998   88  188  584  490]
+ [  38 4871  265  108   67]
+ [  77   73 9853  594  100]
+ [ 430   80  832 8280 1075]
+ [ 339   65  270 1318 8705]]
+
+[train] XGB_v3
+
+XGB_v3
+Accuracy: 0.825021
+Macro F1: 0.827867
+[[3924   96  213  621  494]
+ [  38 4832  311  105   63]
+ [  94   86 9785  636   96]
+ [ 473   98  888 8145 1093]
+ [ 377   71  286 1348 8615]]
+
+[train] XGB_v4
+
+XGB_v4
+Accuracy: 0.813452
+Macro F1: 0.815724
+[[3802   97  235  685  529]
+ [  44 4776  337  122   70]
+ [ 105   99 9723  669  101]
+ [ 490  101  961 8010 1135]
+ [ 416   78  313 1395 8495]]
+
+[train] LGBM_v1
+/Users/daniel_ojeda/Desktop/data_mining/venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+
+LGBM_v1
+Accuracy: 0.848532
+Macro F1: 0.852106
+[[4123   67  165  566  427]
+ [  41 4922  243   94   49]
+ [  65   57 9893  561  121]
+ [ 409   75  693 8492 1028]
+ [ 332   54  215 1219 8877]]
+
+[train] LGBM_v2
+/Users/daniel_ojeda/Desktop/data_mining/venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+
+LGBM_v2
+Accuracy: 0.852809
+Macro F1: 0.856595
+[[4164   62  155  533  434]
+ [  34 4945  227  100   43]
+ [  69   54 9932  540  102]
+ [ 395   71  677 8537 1017]
+ [ 315   55  209 1206 8912]]
+
+[train] LGBM_v3
+/Users/daniel_ojeda/Desktop/data_mining/venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+
+LGBM_v3
+Accuracy: 0.858629
+Macro F1: 0.862055
+[[4166   59  157  528  438]
+ [  39 4910  247  107   46]
+ [  57   40 9970  529  101]
+ [ 335   58  652 8708  944]
+ [ 289   48  208 1167 8985]]
+
+[train] LGBM_v4
+/Users/daniel_ojeda/Desktop/data_mining/venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+
+LGBM_v4
+Accuracy: 0.855754
+Macro F1: 0.859231
+[[4153   56  156  538  445]
+ [  34 4927  238  100   50]
+ [  60   41 9944  538  114]
+ [ 361   61  653 8652  970]
+ [ 327   51  213 1166 8940]]
+
+Done.
+ *  Terminal will be reused by tasks, press any key to close it. 

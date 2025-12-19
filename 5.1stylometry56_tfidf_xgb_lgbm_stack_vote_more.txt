@@ -1,0 +1,215 @@
+run] Output folder: runs/run_20251215_201857
+
+DATASET SIZE INFO
+After filtering/cap: 213936
+model
+llama-chat      53484
+mpt-chat        53484
+mistral-chat    53484
+gpt4            26742
+cohere-chat     26742
+Name: count, dtype: int64
+
+Classes: ['cohere-chat', 'gpt4', 'llama-chat', 'mistral-chat', 'mpt-chat']
+[build] Computing 59 numeric features (cached)...
+  Processed 0/213936
+  Processed 5000/213936
+  Processed 10000/213936
+  Processed 15000/213936
+  Processed 20000/213936
+  Processed 25000/213936
+  Processed 30000/213936
+  Processed 35000/213936
+  Processed 40000/213936
+  Processed 45000/213936
+  Processed 50000/213936
+  Processed 55000/213936
+  Processed 60000/213936
+  Processed 65000/213936
+  Processed 70000/213936
+  Processed 75000/213936
+  Processed 80000/213936
+  Processed 85000/213936
+  Processed 90000/213936
+  Processed 95000/213936
+  Processed 100000/213936
+  Processed 105000/213936
+  Processed 110000/213936
+  Processed 115000/213936
+  Processed 120000/213936
+  Processed 125000/213936
+  Processed 130000/213936
+  Processed 135000/213936
+  Processed 140000/213936
+  Processed 145000/213936
+  Processed 150000/213936
+  Processed 155000/213936
+  Processed 160000/213936
+  Processed 165000/213936
+  Processed 170000/213936
+  Processed 175000/213936
+  Processed 180000/213936
+  Processed 185000/213936
+  Processed 190000/213936
+  Processed 195000/213936
+  Processed 200000/213936
+  Processed 205000/213936
+  Processed 210000/213936
+[build] TF-IDF (fit on train only)...
+[cache] Saved TF-IDF: key=ff28b1ef9777
+TF-IDF train: (171148, 2000)  test: (42788, 2000)
+Combined train: (171148, 2059)  test: (42788, 2059)
+
+[train] XGB_combined...
+
+[XGB_combined] Accuracy: 0.828199
+[XGB_combined] Macro F1:  0.831311
+[XGB_combined] Confusion Matrix:
+[[3953   90  199  603  503]
+ [  46 4835  289  118   61]
+ [  80   75 9814  626  102]
+ [ 469   83  843 8209 1093]
+ [ 368   69  282 1352 8626]]
+
+[train] LGBM_combined_v2...
+
+[LGBM_combined_v2] Accuracy: 0.851968
+[LGBM_combined_v2] Macro F1:  0.856048
+[LGBM_combined_v2] Confusion Matrix:
+[[4177   67  151  527  426]
+ [  37 4936  231   96   49]
+ [  65   59 9920  539  114]
+ [ 383   66  677 8540 1031]
+ [ 327   46  222 1221 8881]]
+
+[train] LGBM_combined_v3...
+
+[LGBM_combined_v3] Accuracy: 0.857624
+[LGBM_combined_v3] Macro F1:  0.861065
+[LGBM_combined_v3] Confusion Matrix:
+[[4157   65  162  516  448]
+ [  36 4906  244  115   48]
+ [  57   40 9985  524   91]
+ [ 344   55  661 8668  969]
+ [ 282   46  216 1173 8980]]
+
+[train] LGBM_combined_v4...
+
+[LGBM_combined_v4] Accuracy: 0.854562
+[LGBM_combined_v4] Macro F1:  0.858374
+[LGBM_combined_v4] Confusion Matrix:
+[[4154   66  152  532  444]
+ [  34 4922  237  104   52]
+ [  60   47 9939  556   95]
+ [ 376   55  683 8592  991]
+ [ 286   48  217 1188 8958]]
+
+[vote] voting...
+
+[VOTE_v2_XGB] Accuracy: 0.845681
+[VOTE_v2_XGB] Macro F1:  0.849515
+[VOTE_v2_XGB] Confusion Matrix:
+[[4100   76  163  548  461]
+ [  39 4914  246   96   54]
+ [  72   61 9904  554  106]
+ [ 388   73  748 8448 1040]
+ [ 323   52  236 1267 8819]]
+
+[VOTE_v2_v3_v4] Accuracy: 0.857857
+[VOTE_v2_v3_v4] Macro F1:  0.861549
+[VOTE_v2_v3_v4] Confusion Matrix:
+[[4181   60  154  518  435]
+ [  34 4927  233  106   49]
+ [  63   38 9978  517  101]
+ [ 362   57  654 8664  960]
+ [ 295   44  219 1183 8956]]
+
+[VOTE_v2_v3_v4_XGB] Accuracy: 0.855357
+[VOTE_v2_v3_v4_XGB] Macro F1:  0.859115
+[VOTE_v2_v3_v4_XGB] Confusion Matrix:
+[[4173   62  163  510  440]
+ [  37 4923  236  105   48]
+ [  68   43 9965  516  105]
+ [ 368   60  685 8605  979]
+ [ 301   45  224 1194 8933]]
+
+[VOTE_v2_v3] Accuracy: 0.856759
+[VOTE_v2_v3] Macro F1:  0.860607
+[VOTE_v2_v3] Confusion Matrix:
+[[4183   60  152  522  431]
+ [  34 4922  235  110   48]
+ [  60   42 9975  522   98]
+ [ 355   58  665 8639  980]
+ [ 302   45  223 1187 8940]]
+
+[VOTE_v2_v4] Accuracy: 0.856923
+[VOTE_v2_v4] Macro F1:  0.860828
+[VOTE_v2_v4] Confusion Matrix:
+[[4185   62  150  526  425]
+ [  32 4939  226  104   48]
+ [  63   47 9950  527  110]
+ [ 366   56  665 8641  969]
+ [ 299   45  221 1181 8951]]
+
+[stack] OOF stacking (base = v2/v3/v4/XGB) ...
+  fold 1/3
+  fold 2/3
+  fold 3/3
+[stack] Saved bundle: runs/run_20251215_201857/stack_bundles/STACK_BASE_v2v3v4XGB.npz
+
+[stack-meta] Training META_LogReg...
+
+[STACK_v2v3v4XGB__META_LogReg] Accuracy: 0.860709
+[STACK_v2v3v4XGB__META_LogReg] Macro F1:  0.864514
+[STACK_v2v3v4XGB__META_LogReg] Confusion Matrix:
+[[4234   62  121  508  423]
+ [  43 4962  191   98   55]
+ [  63   61 9906  570   97]
+ [ 367   61  593 8714  962]
+ [ 299   45  188 1153 9012]]
+
+[stack-meta] Training META_SGD_logloss...
+
+[STACK_v2v3v4XGB__META_SGD_logloss] Accuracy: 0.860124
+[STACK_v2v3v4XGB__META_SGD_logloss] Macro F1:  0.863797
+[STACK_v2v3v4XGB__META_SGD_logloss] Confusion Matrix:
+[[4237   61  135  492  423]
+ [  39 4966  199   95   50]
+ [  64   63 9937  536   97]
+ [ 377   65  618 8678  959]
+ [ 310   49  201 1152 8985]]
+
+[stack-meta] Training META_ExtraTrees...
+
+[STACK_v2v3v4XGB__META_ExtraTrees] Accuracy: 0.860942
+[STACK_v2v3v4XGB__META_ExtraTrees] Macro F1:  0.864744
+[STACK_v2v3v4XGB__META_ExtraTrees] Confusion Matrix:
+[[4298   57  125  468  400]
+ [  47 4983  184   81   54]
+ [  81   70 9885  559  102]
+ [ 386   71  573 8724  943]
+ [ 334   60  220 1135 8948]]
+
+[stack-meta] Training META_LGBM...
+
+[STACK_v2v3v4XGB__META_LGBM] Accuracy: 0.768650
+[STACK_v2v3v4XGB__META_LGBM] Macro F1:  0.767690
+[STACK_v2v3v4XGB__META_LGBM] Confusion Matrix:
+[[3096  122  335  663 1132]
+ [  70 4817  279   98   85]
+ [ 171  121 9381  520  504]
+ [ 438  198  836 6732 2493]
+ [ 390   88  215 1141 8863]]
+
+[stack-meta] Training META_XGB...
+
+[STACK_v2v3v4XGB__META_XGB] Accuracy: 0.861854
+[STACK_v2v3v4XGB__META_XGB] Macro F1:  0.865373
+[STACK_v2v3v4XGB__META_XGB] Confusion Matrix:
+[[4213   54  121  487  473]
+ [  44 4971  202   81   51]
+ [  63   54 9961  518  101]
+ [ 354   65  595 8620 1063]
+ [ 278   51  222 1034 9112]]
+
+Done. Everything saved in: runs/run_20251215_201857

@@ -1,0 +1,92 @@
+
+DATASET SIZE INFO
+Full dataset size: 467985
+Train size BEFORE filtering: 374388
+Test size BEFORE filtering: 93597
+
+Using models: ['cohere-chat', 'gpt4', 'mistral-chat', 'mpt-chat', 'llama-chat']
+Train size AFTER filtering: 171149
+Test size AFTER filtering: 42787
+
+FINAL TRAIN label distribution:
+model
+mpt-chat        42787
+llama-chat      42787
+mistral-chat    42787
+gpt4            21394
+cohere-chat     21394
+
+
+FINAL TEST label distribution:
+model
+mistral-chat    10697
+mpt-chat        10697
+llama-chat      10697
+cohere-chat      5348
+gpt4             5348
+
+
+Building feature matrices
+Feature count: 59
+X_train shape: (171149, 59)
+X_test shape: (42787, 59)
+
+
+
+Training RandomForest...
+
+RandomForest Accuracy: 0.7412298127936056
+RandomForest Macro F1: 0.7354119531016419
+RandomForest Confusion Matrix:
+ [[3058  117  389 1124  660]
+ [  52 3979  829  387  101]
+ [  77  153 9445  939   83]
+ [ 614  220 1461 7176 1226]
+ [ 427  159  343 1711 8057]]
+
+Training XGBoost...
+
+XGB Accuracy: 0.7629186435132166
+XGB Macro F1: 0.7612126726108638
+XGB Confusion Matrix:
+ [[3394  120  251  947  636]
+ [  74 4361  540  251  122]
+ [ 113  223 9320  930  111]
+ [ 624  236 1256 7250 1331]
+ [ 435  135  267 1542 8318]]
+
+Training LightGBM...
+[LightGBM] [Info] Auto-choosing col-wise multi-threading, the overhead of testing was 0.014838 seconds.
+You can set `force_col_wise=true` to remove the overhead.
+[LightGBM] [Info] Total Bins 14055
+[LightGBM] [Info] Number of data points in the train set: 171149, number of used features: 59
+[LightGBM] [Info] Start training from score -2.079424
+[LightGBM] [Info] Start training from score -2.079424
+[LightGBM] [Info] Start training from score -1.386300
+[LightGBM] [Info] Start training from score -1.386300
+[LightGBM] [Info] Start training from score -1.386300
+
+LGBM Accuracy: 0.7660738074648842
+LGBM Macro F1: 0.7648256300230303
+LGBM Confusion Matrix:
+ [[3437  121  236  934  620]
+ [  74 4432  472  258  112]
+ [ 108  232 9345  899  113]
+ [ 616  232 1244 7241 1364]
+ [ 456  151  249 1518 8323]]
+
+Error analysis (XGB):
+Number of errors: 10144
+
+Top confusions:
+true_model    pred_model    domain
+mpt-chat      mistral-chat  news      361
+                            poetry    323
+                            wiki      306
+mistral-chat  llama-chat    wiki      264
+              mpt-chat      reddit    261
+                            news      247
+              llama-chat    books     244
+gpt4          llama-chat    reddit    226
+mistral-chat  llama-chat    news      220
+              mpt-chat      books     214

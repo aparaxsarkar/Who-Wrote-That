@@ -1,0 +1,417 @@
+
+
+[cache] Using TF-IDF cache:
+  tfidf_ff28b1ef9777_X_train.npz
+  tfidf_ff28b1ef9777_X_test.npz
+[cache] TF-IDF features: 2000
+X_train: (171148, 2059)
+X_test: (42788, 2059)
+[domain] Saved domain_test.npy for reuse
+
+[base] Training full base models (for voting + meta_test)...
+
+LGBM_v3
+LGBM_v3 Accuracy: 0.858699
+LGBM_v3 Macro F1:  0.862367
+LGBM_v3 Confusion Matrix:
+[[4179   60  155  525  429]
+ [  27 4922  238  113   49]
+ [  58   44 9963  530  102]
+ [ 343   62  661 8693  938]
+ [ 292   41  215 1164 8985]]
+
+Error analysis (LGBM_v3):
+Number of errors: 6046
+
+Top confusions:
+true_model    pred_model    domain
+mpt-chat      mistral-chat  wiki      289
+                            news      271
+                            poetry    227
+mistral-chat  mpt-chat      reddit    219
+                            news      201
+              llama-chat    wiki      157
+                            news      140
+              mpt-chat      books     123
+              llama-chat    books     119
+              mpt-chat      poetry    118
+dtype: int64
+
+XGB_v2
+XGB_v2 Accuracy: 0.834510
+XGB_v2 Macro F1:  0.837949
+XGB_v2 Confusion Matrix:
+[[3998   88  188  584  490]
+ [  38 4871  265  108   67]
+ [  77   73 9853  594  100]
+ [ 430   80  832 8280 1075]
+ [ 339   65  270 1318 8705]]
+
+Error analysis (XGB_v2):
+Number of errors: 7081
+
+Top confusions:
+true_model    pred_model    domain   
+mpt-chat      mistral-chat  wiki         312
+                            news         311
+                            poetry       263
+mistral-chat  mpt-chat      reddit       245
+                            news         221
+              llama-chat    wiki         190
+                            news         172
+                            books        148
+              mpt-chat      books        143
+                            abstracts    122
+dtype: int64
+/Users/daniel_ojeda/Desktop/data_mining/venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:406: ConvergenceWarning: lbfgs failed to converge after 4000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=4000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+
+LR_base
+LR_base Accuracy: 0.534285
+LR_base Macro F1:  0.492759
+LR_base Confusion Matrix:
+[[1365  257  920 1524 1282]
+ [ 102 1907 2047  557  736]
+ [ 155  448 8105 1375  614]
+ [ 743  322 2517 4274 2841]
+ [ 519  193  750 2025 7210]]
+
+Error analysis (LR_base):
+Number of errors: 19927
+
+Top confusions:
+true_model    pred_model    domain   
+mistral-chat  mpt-chat      abstracts    720
+gpt4          mpt-chat      abstracts    633
+mistral-chat  mpt-chat      reddit       576
+mpt-chat      mistral-chat  news         534
+gpt4          llama-chat    news         522
+mistral-chat  llama-chat    news         503
+                            wiki         489
+gpt4          llama-chat    reddit       447
+mpt-chat      mistral-chat  poetry       433
+mistral-chat  llama-chat    books        411
+dtype: int64
+/Users/daniel_ojeda/Desktop/data_mining/venv/lib/python3.12/site-packages/sklearn/linear_model/_base.py:408: RuntimeWarning: invalid value encountered in divide
+  prob /= prob.sum(axis=1).reshape((prob.shape[0], -1))
+
+SGD_base
+SGD_base Accuracy: 0.274540
+SGD_base Macro F1:  0.221049
+SGD_base Confusion Matrix:
+[[4519   17   74    4  734]
+ [4703  354   72    0  220]
+ [9758   69  664    0  206]
+ [8890   26  146    1 1634]
+ [4398   37   53    0 6209]]
+
+Error analysis (SGD_base):
+Number of errors: 31041
+
+Top confusions:
+true_model    pred_model   domain   
+llama-chat    cohere-chat  recipes      1438
+                           abstracts    1415
+                           news         1390
+                           wiki         1387
+                           books        1366
+mistral-chat  cohere-chat  wiki         1288
+                           recipes      1285
+                           books        1283
+                           news         1262
+                           abstracts    1125
+dtype: int64
+
+[vote] Running voting configurations...
+
+VOTE-1_LGBM3_XGB2__w11
+VOTE-1_LGBM3_XGB2__w11 Accuracy: 0.852459
+VOTE-1_LGBM3_XGB2__w11 Macro F1:  0.856015
+VOTE-1_LGBM3_XGB2__w11 Confusion Matrix:
+[[4120   65  167  543  453]
+ [  30 4918  242  110   49]
+ [  65   48 9949  538   97]
+ [ 360   65  704 8597  971]
+ [ 311   50  228 1217 8891]]
+
+Error analysis (VOTE-1_LGBM3_XGB2__w11):
+Number of errors: 6313
+
+Top confusions:
+true_model    pred_model    domain
+mpt-chat      mistral-chat  wiki      298
+                            news      277
+                            poetry    241
+mistral-chat  mpt-chat      reddit    232
+                            news      201
+              llama-chat    wiki      162
+                            news      150
+              mpt-chat      books     128
+              llama-chat    books     128
+cohere-chat   mistral-chat  reddit    107
+dtype: int64
+
+VOTE-2_LGBM3_XGB2__w21
+VOTE-2_LGBM3_XGB2__w21 Accuracy: 0.855801
+VOTE-2_LGBM3_XGB2__w21 Macro F1:  0.859457
+VOTE-2_LGBM3_XGB2__w21 Confusion Matrix:
+[[4155   62  164  528  439]
+ [  29 4922  237  110   51]
+ [  62   45 9958  535   97]
+ [ 351   63  679 8641  963]
+ [ 301   47  218 1189 8942]]
+
+Error analysis (VOTE-2_LGBM3_XGB2__w21):
+Number of errors: 6170
+
+Top confusions:
+true_model    pred_model    domain
+mpt-chat      mistral-chat  wiki      292
+                            news      276
+                            poetry    232
+mistral-chat  mpt-chat      reddit    230
+                            news      201
+              llama-chat    wiki      158
+                            news      145
+              mpt-chat      books     126
+              llama-chat    books     126
+              mpt-chat      poetry    108
+dtype: int64
+
+VOTE-4_LGBM3_XGB2_LR__w210.5
+VOTE-4_LGBM3_XGB2_LR__w210.5 Accuracy: 0.854539
+VOTE-4_LGBM3_XGB2_LR__w210.5 Macro F1:  0.858111
+VOTE-4_LGBM3_XGB2_LR__w210.5 Confusion Matrix:
+[[4130   63  170  540  445]
+ [  28 4910  251  113   47]
+ [  56   44 9974  532   91]
+ [ 348   63  704 8635  947]
+ [ 295   49  228 1210 8915]]
+
+Error analysis (VOTE-4_LGBM3_XGB2_LR__w210.5):
+Number of errors: 6224
+
+Top confusions:
+true_model    pred_model    domain
+mpt-chat      mistral-chat  wiki      297
+                            news      279
+                            poetry    245
+mistral-chat  mpt-chat      reddit    237
+                            news      190
+              llama-chat    wiki      166
+                            news      155
+                            books     129
+              mpt-chat      books     128
+cohere-chat   mistral-chat  poetry    107
+dtype: int64
+
+VOTE-5_LGBM3_XGB2_LR_SGD__w210.50.5
+VOTE-5_LGBM3_XGB2_LR_SGD__w210.50.5 Accuracy: 0.323689
+VOTE-5_LGBM3_XGB2_LR_SGD__w210.50.5 Macro F1:  0.300279
+VOTE-5_LGBM3_XGB2_LR_SGD__w210.50.5 Confusion Matrix:
+[[5050    2   17   38  241]
+ [4706  595   23    4   21]
+ [9762    4  849   44   38]
+ [8890    6   43 1178  580]
+ [4391    4   23  101 6178]]
+
+Error analysis (VOTE-5_LGBM3_XGB2_LR_SGD__w210.50.5):
+Number of errors: 28938
+
+Top confusions:
+true_model    pred_model   domain   
+llama-chat    cohere-chat  recipes      1438
+                           abstracts    1416
+                           news         1391
+                           wiki         1387
+                           books        1366
+mistral-chat  cohere-chat  wiki         1297
+                           recipes      1288
+                           books        1285
+                           news         1264
+                           abstracts    1130
+dtype: int64
+
+[stack] STACK_CV3__BASE_LGBM3_XGB2__META_LogReg
+  Bases: ['LGBM_v3', 'XGB_v2']
+  Meta:  LogReg  | CV=3
+  fold 1/3
+  fold 2/3
+  fold 3/3
+  [meta] training...
+
+STACK_CV3__BASE_LGBM3_XGB2__META_LogReg
+STACK_CV3__BASE_LGBM3_XGB2__META_LogReg Accuracy: 0.859984
+STACK_CV3__BASE_LGBM3_XGB2__META_LogReg Macro F1:  0.863813
+STACK_CV3__BASE_LGBM3_XGB2__META_LogReg Confusion Matrix:
+[[4220   57  132  530  409]
+ [  36 4957  200  103   53]
+ [  60   55 9918  559  105]
+ [ 360   66  612 8699  960]
+ [ 308   45  194 1147 9003]]
+
+Error analysis (STACK_CV3__BASE_LGBM3_XGB2__META_LogReg):
+Number of errors: 5991
+
+Top confusions:
+true_model    pred_model    domain
+mpt-chat      mistral-chat  wiki      275
+                            news      265
+                            poetry    231
+mistral-chat  mpt-chat      reddit    219
+                            news      203
+              llama-chat    wiki      141
+                            news      134
+              mpt-chat      books     131
+                            poetry    123
+              llama-chat    books     112
+dtype: int64
+
+[stack] STACK_CV3__BASE_LGBM3_XGB2__META_SGDlogloss
+  Bases: ['LGBM_v3', 'XGB_v2']
+  Meta:  SGD_logloss  | CV=3
+  fold 1/3
+  fold 2/3
+  fold 3/3
+  [meta] training...
+
+STACK_CV3__BASE_LGBM3_XGB2__META_SGDlogloss
+STACK_CV3__BASE_LGBM3_XGB2__META_SGDlogloss Accuracy: 0.859330
+STACK_CV3__BASE_LGBM3_XGB2__META_SGDlogloss Macro F1:  0.863077
+STACK_CV3__BASE_LGBM3_XGB2__META_SGDlogloss Confusion Matrix:
+[[4223   64  140  499  422]
+ [  29 4962  204  103   51]
+ [  64   55 9934  539  105]
+ [ 371   68  640 8664  954]
+ [ 314   47  205 1145 8986]]
+
+Error analysis (STACK_CV3__BASE_LGBM3_XGB2__META_SGDlogloss):
+Number of errors: 6019
+
+Top confusions:
+true_model    pred_model    domain
+mpt-chat      mistral-chat  wiki      280
+                            news      264
+                            poetry    228
+mistral-chat  mpt-chat      reddit    221
+                            news      203
+              llama-chat    wiki      149
+                            news      137
+              mpt-chat      books     126
+                            poetry    119
+              llama-chat    books     117
+dtype: int64
+
+[stack] STACK_CV3__BASE_LGBM3_XGB2__META_ExtraTrees
+  Bases: ['LGBM_v3', 'XGB_v2']
+  Meta:  ExtraTrees  | CV=3
+  fold 1/3
+  fold 2/3
+  fold 3/3
+  [meta] training...
+
+STACK_CV3__BASE_LGBM3_XGB2__META_ExtraTrees
+STACK_CV3__BASE_LGBM3_XGB2__META_ExtraTrees Accuracy: 0.860498
+STACK_CV3__BASE_LGBM3_XGB2__META_ExtraTrees Macro F1:  0.864447
+STACK_CV3__BASE_LGBM3_XGB2__META_ExtraTrees Confusion Matrix:
+[[4296   50  125  496  381]
+ [  47 4957  201   89   55]
+ [  70   58 9890  572  107]
+ [ 368   70  567 8729  963]
+ [ 355   55  215 1125 8947]]
+
+Error analysis (STACK_CV3__BASE_LGBM3_XGB2__META_ExtraTrees):
+Number of errors: 5969
+
+Top confusions:
+true_model    pred_model    domain
+mpt-chat      mistral-chat  wiki      266
+                            news      259
+                            poetry    220
+mistral-chat  mpt-chat      news      216
+                            reddit    210
+              llama-chat    news      135
+                            wiki      134
+              mpt-chat      books     121
+                            poetry    120
+                            wiki      111
+dtype: int64
+
+[stack] STACK_CV3__BASE_LGBM3_XGB2__META_XGB
+  Bases: ['LGBM_v3', 'XGB_v2']
+  Meta:  XGB  | CV=3
+  fold 1/3
+  fold 2/3
+  fold 3/3
+  [meta] training...
+
+STACK_CV3__BASE_LGBM3_XGB2__META_XGB
+STACK_CV3__BASE_LGBM3_XGB2__META_XGB Accuracy: 0.861199
+STACK_CV3__BASE_LGBM3_XGB2__META_XGB Macro F1:  0.864940
+STACK_CV3__BASE_LGBM3_XGB2__META_XGB Confusion Matrix:
+[[4248   52  124  505  419]
+ [  44 4964  211   80   50]
+ [  65   58 9913  565   96]
+ [ 349   69  566 8675 1038]
+ [ 314   57  211 1066 9049]]
+
+Error analysis (STACK_CV3__BASE_LGBM3_XGB2__META_XGB):
+Number of errors: 5939
+
+Top confusions:
+true_model    pred_model    domain
+mpt-chat      mistral-chat  wiki      250
+                            news      243
+mistral-chat  mpt-chat      news      235
+mpt-chat      mistral-chat  poetry    232
+mistral-chat  mpt-chat      reddit    227
+              llama-chat    wiki      136
+                            news      135
+              mpt-chat      books     126
+                            wiki      120
+                            poetry    120
+dtype: int64
+
+[stack] STACK_CV3__BASE_LGBM3_XGB2__META_LGBM
+  Bases: ['LGBM_v3', 'XGB_v2']
+  Meta:  LGBM  | CV=3
+  fold 1/3
+  fold 2/3
+  fold 3/3
+  [meta] training...
+
+STACK_CV3__BASE_LGBM3_XGB2__META_LGBM
+STACK_CV3__BASE_LGBM3_XGB2__META_LGBM Accuracy: 0.857483
+STACK_CV3__BASE_LGBM3_XGB2__META_LGBM Macro F1:  0.861535
+STACK_CV3__BASE_LGBM3_XGB2__META_LGBM Confusion Matrix:
+[[4193   49  124  510  472]
+ [  42 4951  223   81   52]
+ [  64   56 9859  597  121]
+ [ 314   74  565 8486 1258]
+ [ 296   59  203  938 9201]]
+
+Error analysis (STACK_CV3__BASE_LGBM3_XGB2__META_LGBM):
+Number of errors: 6098
+
+Top confusions:
+true_model    pred_model    domain
+mistral-chat  mpt-chat      news      285
+                            reddit    246
+mpt-chat      mistral-chat  wiki      223
+                            news      217
+                            poetry    195
+mistral-chat  mpt-chat      poetry    168
+                            wiki      154
+                            books     152
+              llama-chat    wiki      136
+                            news      132
+dtype: int64
+
+\

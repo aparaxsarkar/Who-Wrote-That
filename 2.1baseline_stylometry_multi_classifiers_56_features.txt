@@ -1,0 +1,130 @@
+DATASET SIZE INFO
+Full dataset size: 467985
+
+Using models: ['cohere-chat', 'gpt4', 'mistral-chat', 'mpt-chat', 'llama-chat']
+Train size: 171148
+Test size: 42788
+Train size AFTER filtering: 171148
+Test size AFTER filtering: 42788
+
+FINAL TRAIN label distribution:
+model
+llama-chat      42787
+mpt-chat        42787
+mistral-chat    42787
+cohere-chat     21394
+gpt4            21393
+Name: count, dtype: int64
+
+FINAL TEST label distribution:
+model
+llama-chat      10697
+mistral-chat    10697
+mpt-chat        10697
+gpt4             5349
+cohere-chat      5348
+Name: count, dtype: int64
+
+Feature count: 56
+X_train shape: (171148, 56)
+X_test shape: (42788, 56)
+
+Classes:
+['cohere-chat', 'gpt4', 'llama-chat', 'mistral-chat', 'mpt-chat']
+
+Training RandomForest...
+
+RandomForest Accuracy: 0.7439702720388894
+RandomForest Macro F1: 0.7388238798350606
+RandomForest Confusion Matrix:
+ [[3096  130  411 1074  637]
+ [  59 4027  762  391  110]
+ [ 101  141 9398  975   82]
+ [ 595  228 1394 7227 1253]
+ [ 406  161  369 1676 8085]]
+
+Training Logistic Regression...
+
+
+LogReg Accuracy: 0.5874310554361036
+LogReg Macro F1: 0.5630000667457578
+LogReg Confusion Matrix:
+ [[1868  270  793 1434  983]
+ [  71 2841 1477  486  474]
+ [ 206  716 8356 1160  259]
+ [ 904  474 2244 5066 2009]
+ [ 588  236  740 2129 7004]]
+
+Training Linear SVM...
+
+LinearSVC Accuracy: 0.5714686360661868
+LinearSVC Macro F1: 0.5367485848853574
+LinearSVC Confusion Matrix:
+ [[1550  262 1051 1349 1136]
+ [  65 2664 1678  331  611]
+ [ 152  601 8837  769  338]
+ [ 739  529 2860 4138 2431]
+ [ 460  232  947 1795 7263]]
+
+Training ExtraTrees...
+
+ExtraTrees Accuracy: 0.7401607927456296
+ExtraTrees Macro F1: 0.7346161186648397
+ExtraTrees Confusion Matrix:
+ [[3029  154  469 1050  646]
+ [  51 3992  852  348  106]
+ [  98  122 9474  928   75]
+ [ 529  206 1568 7141 1253]
+ [ 389  173  413 1688 8034]]
+
+Training XGBoost...
+
+XGB Accuracy: 0.7653781434046929
+XGB Macro F1: 0.7632314794406245
+XGB Confusion Matrix:
+ [[3427  115  286  913  607]
+ [  65 4359  510  296  119]
+ [ 125  233 9334  884  121]
+ [ 635  230 1189 7310 1333]
+ [ 461  149  282 1486 8319]]
+
+Training LightGBM...
+[LightGBM] [Info] Auto-choosing row-wise multi-threading, the overhead of testing was 0.004990 seconds.
+You can set `force_row_wise=true` to remove the overhead.
+And if memory is not enough, you can set `force_col_wise=true`.
+[LightGBM] [Info] Total Bins 13533
+[LightGBM] [Info] Number of data points in the train set: 171148, number of used features: 56
+[LightGBM] [Info] Start training from score -2.079418
+[LightGBM] [Info] Start training from score -2.079465
+[LightGBM] [Info] Start training from score -1.386294
+[LightGBM] [Info] Start training from score -1.386294
+[LightGBM] [Info] Start training from score -1.386294
+
+LGBM Accuracy: 0.767388052725063
+LGBM Macro F1: 0.7660507531602211
+LGBM Confusion Matrix:
+ [[3467  105  276  887  613]
+ [  73 4430  454  278  114]
+ [ 119  253 9327  881  117]
+ [ 625  228 1177 7289 1378]
+ [ 468  153  270 1484 8322]]
+
+Error analysis (XGB):
+Number of errors: 10039
+
+Top confusions:
+true_model    pred_model    domain
+mpt-chat      mistral-chat  news      348
+                            wiki      331
+                            poetry    282
+mistral-chat  mpt-chat      reddit    269
+              llama-chat    wiki      255
+                            books     239
+              mpt-chat      news      227
+gpt4          llama-chat    reddit    213
+mistral-chat  mpt-chat      books     209
+              llama-chat    news      204
+Name: count, dtype: int64
+
+Done.
+

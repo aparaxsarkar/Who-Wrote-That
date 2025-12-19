@@ -1,0 +1,81 @@
+DATASET SIZE INFO
+Full dataset size: 467985
+
+Train size AFTER filtering: 171149
+Test size AFTER filtering: 42787
+
+FINAL TRAIN label distribution:
+model
+mpt-chat        42787
+llama-chat      42787
+mistral-chat    42787
+gpt4            21394
+cohere-chat     21394
+
+
+FINAL TEST label distribution:
+model
+mistral-chat    10697
+mpt-chat        10697
+llama-chat      10697
+cohere-chat      5348
+gpt4             5348
+
+
+Building TF-IDF features...
+TF-IDF train shape: (171149, 2000)
+TF-IDF test shape: (42787, 2000)
+TF-IDF feature count: 2000
+
+Classes:
+['cohere-chat', 'gpt4', 'llama-chat', 'mistral-chat', 'mpt-chat']
+
+Training XGBoost...
+
+XGB Accuracy: 0.776240446864702
+XGB Macro F1: 0.7763081087366576
+XGB Confusion Matrix:
+ [[3423  112  314  809  690]
+ [  58 4566  451  167  106]
+ [ 105  153 9573  671  195]
+ [ 543  148 1061 7390 1555]
+ [ 468   84  396 1488 8261]]
+
+Training LightGBM...
+[LightGBM] [Info] Auto-choosing col-wise multi-threading, the overhead of testing was 1.185986 seconds.
+You can set `force_col_wise=true` to remove the overhead.
+[LightGBM] [Info] Total Bins 510000
+[LightGBM] [Info] Number of data points in the train set: 171149, number of used features: 2000
+[LightGBM] [Info] Start training from score -2.079424
+[LightGBM] [Info] Start training from score -2.079424
+[LightGBM] [Info] Start training from score -1.386300
+[LightGBM] [Info] Start training from score -1.386300
+[LightGBM] [Info] Start training from score -1.386300
+/Users/daniel_ojeda/Desktop/data_mining copy/venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+
+LGBM Accuracy: 0.7929745016009535
+LGBM Macro F1: 0.7947002530579416
+LGBM Confusion Matrix:
+ [[3634  112  268  750  584]
+ [  57 4716  349  139   87]
+ [ 108  137 9601  648  203]
+ [ 519  130  958 7663 1427]
+ [ 478   94  361 1449 8315]]
+
+Error analysis (XGB):
+Number of errors: 9574
+
+Top confusions:
+true_model    pred_model    domain
+mistral-chat  mpt-chat      reddit    359
+mpt-chat      mistral-chat  wiki      350
+                            poetry    332
+mistral-chat  mpt-chat      news      328
+mpt-chat      mistral-chat  news      283
+mistral-chat  mpt-chat      poetry    235
+              llama-chat    wiki      227
+                            news      226
+                            books     207
+              mpt-chat      books     171
+
